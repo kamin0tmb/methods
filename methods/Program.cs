@@ -14,14 +14,14 @@ namespace methods
 
             var favcolors = new string[3];
             for (int i = 0; i < favcolors.Length; i++)
-                favcolors[i] = ShowColor(anketa.name);
+                favcolors[i] = ShowColor(anketa.name, anketa.age);
             Console.WriteLine("Напишите ваши любимые цвета: ");
             foreach (var color in favcolors)
                 Console.WriteLine(color);
         }
-        static string ShowColor(string username)
+        static string ShowColor(string username, int userage)
         {
-            Console.WriteLine("{0}, Напишите свой любимый цвет на английском с маленькой буквы", username);
+            Console.WriteLine("{0}, в Ваши {1} лет какие ваши любимые цвета? Напишите цвет на английском с маленькой буквы", username, userage);
             string color = Console.ReadLine();
 
             switch (color)

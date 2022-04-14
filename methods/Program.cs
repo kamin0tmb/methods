@@ -21,7 +21,7 @@ namespace methods
         }
         static string ShowColor(string username)
         {
-            Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+            Console.WriteLine("{0}, Напишите свой любимый цвет на английском с маленькой буквы", username);
             string color = Console.ReadLine();
 
             switch (color)

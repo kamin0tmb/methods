@@ -6,13 +6,9 @@ namespace methods
     {
         static void Main(string[] args)
         {
-            var array = GetArrayFromConsole(4);
-            for (int i = 0; i < array.Length; i++)
-                Console.WriteLine(array[i]);
-            Console.WriteLine();
-            array = SortArray(array);
-            for (int i = 0; i < array.Length; i++)
-                Console.WriteLine(array[i]);
+            var array = GetArrayFromConsole(10);
+            ShowArray(array, true);
+            
         }
         static int[] GetArrayFromConsole(int num = 3)
         {
@@ -46,6 +42,14 @@ namespace methods
             return result;
         
         }
+        static void ShowArray(int[] array, bool IsSort = false)
+        {
+            var temp = array;
+            if (IsSort)
+                temp = SortArray(array);
+            foreach (var item in temp)
+                Console.WriteLine(item);
+                }
     }
 }
 

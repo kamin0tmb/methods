@@ -6,15 +6,15 @@ namespace methods
     {
         static void Main(string[] args)
         {
-            var array = GetArrayFromConsole();
-            for (int i = 0; i < 5; i++)
+            var array = GetArrayFromConsole(4);
+            for (int i = 0; i < array.Length; i++)
                 Console.WriteLine(array[i]);
             Console.WriteLine();
             array = SortArray(array);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < array.Length; i++)
                 Console.WriteLine(array[i]);
         }
-        static int[] GetArrayFromConsole(int num = 5)
+        static int[] GetArrayFromConsole(int num = 3)
         {
             var result = new int[num];
 

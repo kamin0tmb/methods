@@ -6,50 +6,26 @@ namespace methods
     {
         static void Main(string[] args)
         {
-            var array = GetArrayFromConsole(10);
-            ShowArray(array, true);
-            
-        }
-        static int[] GetArrayFromConsole(int num = 3)
-        {
-            var result = new int[num];
+            var SomeName = "Евгения";
+            var SomeAge = 33;
+            Console.WriteLine(SomeName);
+            Console.WriteLine(SomeAge);
+            GetName(SomeName);
+            GetAge(SomeAge);
+            Console.WriteLine(SomeName);
+            Console.WriteLine(SomeAge);
 
-            for (int i = 0; i < result.Length; i++)
+            static void GetName(string name)
             {
-                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-                result[i] = int.Parse(Console.ReadLine());
+                Console.WriteLine("Введите имя: ");
+                Console.ReadLine();
             }
-            Console.WriteLine();
-            return result;
-
-        }
-        static int[] SortArray(int[] result)
-        {
-
-            int temp = 0;
-            for (int i = 0; i < result.Length; i++)
+            static void GetAge(int age)
             {
-                for (int j = i + 1; j < result.Length; j++)
-                    if (result[i] > result[j])
-                    {
-                        temp = result[i];
-                        result[i] = result[j];
-                        result[j] = temp;
-                    }
-
+                Console.WriteLine("Введите возрвст: ");
+                Console.ReadLine();
             }
-
-            return result;
-        
         }
-        static void ShowArray(int[] array, bool IsSort = false)
-        {
-            var temp = array;
-            if (IsSort)
-                temp = SortArray(array);
-            foreach (var item in temp)
-                Console.WriteLine(item);
-                }
     }
 }
 

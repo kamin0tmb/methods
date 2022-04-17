@@ -7,11 +7,11 @@ namespace methods
         static void Main(string[] args)
         {
             string SomeName = "Евгения";
-            int SomeAge = 33;
+            byte SomeAge = 33;
             Console.WriteLine(SomeName);
             Console.WriteLine(SomeAge);
             GetName(ref SomeName);
-            GetAge(SomeAge);
+            GetAge(out SomeName, out SomeAge);
             Console.WriteLine(SomeName);
             Console.WriteLine(SomeAge);
 
@@ -20,10 +20,12 @@ namespace methods
                 Console.WriteLine("Введите имя: ");
                 name = Console.ReadLine();
             }
-            static void GetAge(int age)
+            static void GetAge(out string name, out byte age)
             {
+                Console.WriteLine("Введите имя: ");
+                name = Console.ReadLine();
                 Console.WriteLine("Введите возрвст: ");
-                age = Int32.Parse(Console.ReadLine());
+                age = byte.Parse(Console.ReadLine());
             }
         }
     }

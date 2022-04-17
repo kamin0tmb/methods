@@ -6,24 +6,24 @@ namespace methods
     {
         static void Main(string[] args)
         {
-            var SomeName = "Евгения";
-            var SomeAge = 33;
+            string SomeName = "Евгения";
+            int SomeAge = 33;
             Console.WriteLine(SomeName);
             Console.WriteLine(SomeAge);
-            GetName(SomeName);
+            GetName(ref SomeName);
             GetAge(SomeAge);
             Console.WriteLine(SomeName);
             Console.WriteLine(SomeAge);
 
-            static void GetName(string name)
+            static void GetName(ref string name)
             {
                 Console.WriteLine("Введите имя: ");
-                Console.ReadLine();
+                name = Console.ReadLine();
             }
             static void GetAge(int age)
             {
                 Console.WriteLine("Введите возрвст: ");
-                Console.ReadLine();
+                age = Int32.Parse(Console.ReadLine());
             }
         }
     }

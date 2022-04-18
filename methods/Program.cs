@@ -6,42 +6,83 @@ namespace methods
     {
         static void Main(string[] args)
         {
-            string SomeName = "Евгения";
-            byte SomeAge = 33;
-            Console.WriteLine(SomeName);
-            Console.WriteLine(SomeAge);
-            GetName(ref SomeName);
-            GetAge(out SomeName, out SomeAge);
-            Console.WriteLine(SomeName);
-            Console.WriteLine(SomeAge);
-            Console.WriteLine("Введите число 1: ");
-            int num1 = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Введите число 2: ");
-            int num2 = Int32.Parse(Console.ReadLine());
-            int num3;
-            int num4 = 2;
-            int summ = SumNumbers(ref num1, in num2, out num3, num4);
-            Console.WriteLine(summ);
-            static void GetName(ref string name)
+
+            int[] array = GetArrayFromConsole();
+            int[] sorteddesc;
+            int[] sortedasc;
+            SortArray(in array, out sorteddesc, out sortedasc);
+            Console.WriteLine("Исходный массив: ");
+            ShowArray(array);
+            Console.WriteLine("Отсортированный массив от меньшего к большему: ");
+            ShowArray(sortedasc);
+            Console.WriteLine("Отсортированный массив от большего к меньшему: ");
+            ShowArray(sorteddesc);
+
+
+        }
+        static int[] GetArrayFromConsole()
+        {
+            var result = new int[10];
+
+            for (int i = 0; i < result.Length; i++)
             {
-                Console.WriteLine("Введите имя: ");
-                name = Console.ReadLine();
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
             }
-            static void GetAge(out string name, out byte age)
+            Console.WriteLine();
+            return result;
+
+        }
+        static int[] SortArrayAsc(int[] array)
+        {
+            int[] result = new int[array.Length];
+            Array.Copy(array, result, array.Length);
+            int temp = 0;
+            for (int i = 0; i < result.Length; i++)
             {
-                Console.WriteLine("Введите имя: ");
-                name = Console.ReadLine();
-                Console.WriteLine("Введите возрвст: ");
-                age = byte.Parse(Console.ReadLine());
+                for (int j = i + 1; j < result.Length; j++)
+                    if (result[i] > result[j])
+                    {
+                        temp = result[i];
+                        result[i] = result[j];
+                        result[j] = temp;
+                    }
+
             }
 
-            static int SumNumbers(ref int num1, in int num2, out int num3, int num4)
+            return result;
+        }
+        static int[] SortArrayDesc(int[] array)
+        {
+            int[] result = new int[array.Length];
+            Array.Copy(array, result, array.Length);
+            int temp = 0;
+            for (int i = 0; i < result.Length; i++)
             {
-                
-                num3 = num1 + num2;
-                var result = num3 * num4;
-                return result;
+                for (int j = i + 1; j < result.Length; j++)
+                    if (result[i] < result[j])
+                    {
+                        temp = result[i];
+                        result[i] = result[j];
+                        result[j] = temp;
+                    }
+
             }
+
+            return result;
+        }
+        static void SortArray (in int[] array, out int[] sorteddesc, out int[] sortedasc)
+        {
+            sortedasc = SortArrayAsc(array);
+            sorteddesc = SortArrayDesc(array);
+            
+        }
+        static void ShowArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+                Console.WriteLine(array[i]);
+            Console.WriteLine();
+
         }
     }
 }

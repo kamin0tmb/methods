@@ -18,6 +18,7 @@ class MainClass
     static void Echo(string saidword, int deep)
     {
         string modif = saidword;
+        Console.BackgroundColor = (ConsoleColor)deep;
         Console.WriteLine("..." + modif);
         if (modif.Length > 2)
         {
